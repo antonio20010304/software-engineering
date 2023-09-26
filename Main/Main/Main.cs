@@ -1,68 +1,60 @@
-﻿namespace name;
+namespace name;
 
 public abstract class AviationBase
 {
-    int _max_horizontal_speed;
-    int _max_flying_high;
+    int MaxHorizontalSpeed { get; set; }
+    public int MaxFlyingHigh { get; set; }
 }
 
 public abstract class WingsBase : AviationBase
 {
-    int _wingspan;
+    public int Wingspan { get; set; }
 }
 
 public class Fighter_aircraft : WingsBase, IHorizontal_takeoff
 {
-    int _afterburner_speed;
-
-    public int wingspan { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public int AfterburnerSpeed { get; set; }
 }
 
 public class Helicopter : AviationBase, IVertical_takeoff
 {
-    int _takeoff_speed;
-    int _number_of_screws;
+    public int NumberOfScrews { get; set; }
 
-    public int takeoff_speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public int vertical_takeoff_speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public int TakeoffSpeed { get ; set; }
+    public int VerticalTakeoffSpeed { get ; set; }
 }
 
 public class Bomber_aircraft : WingsBase, IHorizontal_takeoff
 {
-    double _max_payload;
+    double _maxPayload;
 
-    public int wingspan { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 }
 
 public class Tiltrotor : WingsBase, IHorizontal_takeoff, IVertical_takeoff
 {
-    int _vertical_takeoff_speed;
-
-    public int takeoff_speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public int vertical_takeoff_speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public int wingspan { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public int TakeoffSpeed { get ; set; }
+    public int VerticalTakeoffSpeed { get ; set; }
 }
 
 public class Quadrocopter : AviationBase, IVertical_takeoff
 {
-    string _type;
-    string _management_protocol;
+    public string Type { get ; set; }
+    public string ManagementProtocol { get ; set; }
 
-    public int takeoff_speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public int vertical_takeoff_speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
+    public int TakeoffSpeed { get ; set; }
+    public int VerticalTakeoffSpeed { get ; set; }
 
 }
 
 public interface IVertical_takeoff
 {
-    public int takeoff_speed{ get; set; }
-    public int vertical_takeoff_speed{ get; set; }
+    public int TakeoffSpeed{ get; set; }
+    public int VerticalTakeoffSpeed{ get; set; }
 }
 
 public interface IHorizontal_takeoff
 {
-    public int wingspan { get; set; }
+    public int Wingspan { get; set; }
 }
 /* 
  8. Авиация. Необходимо иметь возможность отдельно группировать системы с вертикальным взлётом и системы с горизонтальным взлётом.
@@ -84,6 +76,7 @@ public interface IHorizontal_takeoff
 Конвертоплан
 	Максимальная горизонтальная скорость  
 	Скорость вертикального взлёта  
+
 	Максимальная высота полета  
 	Размах крыльев  	 
 БПЛА-квадрокоптер
